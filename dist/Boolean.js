@@ -1,5 +1,5 @@
 import { none, some } from "./Maybe.js";
-export /*@__INLINE__*/ const thenDo = (b, onTrue) => {
+export const thenDo = /*@__PURE__*/ (b, onTrue) => {
     if (b) {
         return some(onTrue());
     }

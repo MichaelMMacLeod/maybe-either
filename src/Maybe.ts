@@ -11,19 +11,19 @@ export type Maybe<T> = None | Some<T>;
 
 export const none: None = Object.freeze({ __Maybe_None: 'None' }) as None;
 
-export /*@__INLINE__*/ const some = <T>(t: T): Some<T> => {
+export const some = /*@__PURE__*/ <T>(t: T): Some<T> => {
     return t as Some<T>;
 };
 
-export /*@__INLINE__*/ const isNone = <T>(m: Maybe<T>): m is None => {
+export const isNone = /*@__PURE__*/ <T>(m: Maybe<T>): m is None => {
     return m === none;
 };
 
-export /*@__INLINE__*/ const isSome = <T>(m: Maybe<T>): m is Some<T> => {
+export const isSome = /*@__PURE__*/ <T>(m: Maybe<T>): m is Some<T> => {
     return m !== none;
 };
 
-export /*@__INLINE__*/ const map = <T, U>(
+export const map = /*@__PURE__*/ <T, U>(
     m: Maybe<T>,
     onNone: () => U,
     onSome: (value: T) => U
@@ -34,7 +34,7 @@ export /*@__INLINE__*/ const map = <T, U>(
     return onNone();
 };
 
-export /*@__INLINE__*/ const mapSome = <T, U>(
+export const mapSome = /*@__PURE__*/ <T, U>(
     m: Maybe<T>,
     onSome: (value: T) => U
 ): Maybe<U> => {
@@ -44,14 +44,14 @@ export /*@__INLINE__*/ const mapSome = <T, U>(
     return none;
 };
 
-export /*@__INLINE__*/ const unwrapOr = <T>(m: Maybe<T>, onNone: () => T): T => {
+export const unwrapOr = /*@__PURE__*/ <T>(m: Maybe<T>, onNone: () => T): T => {
     return map(m, onNone, v => v);
 };
 
-export /*@__INLINE__*/ const orElse = <T>(m: Maybe<T>, onNone: () => Maybe<T>): Maybe<T> => {
+export const orElse = /*@__PURE__*/ <T>(m: Maybe<T>, onNone: () => Maybe<T>): Maybe<T> => {
     return map(m, onNone, v => some(v));
 };
 
-export /*@__INLINE__*/ const okOrElse = <T, E>(m: Maybe<T>, onNone: () => E): Either<E, T> => {
+export const okOrElse = /*@__PURE__*/ <T, E>(m: Maybe<T>, onNone: () => E): Either<E, T> => {
     return map(m, () => left(onNone()), v => right(v));
 };

@@ -1,33 +1,33 @@
 import { left, right } from "./Either.js";
 export const none = Object.freeze({ __Maybe_None: 'None' });
-export /*@__INLINE__*/ const some = (t) => {
+export const some = /*@__PURE__*/ (t) => {
     return t;
 };
-export /*@__INLINE__*/ const isNone = (m) => {
+export const isNone = /*@__PURE__*/ (m) => {
     return m === none;
 };
-export /*@__INLINE__*/ const isSome = (m) => {
+export const isSome = /*@__PURE__*/ (m) => {
     return m !== none;
 };
-export /*@__INLINE__*/ const map = (m, onNone, onSome) => {
+export const map = /*@__PURE__*/ (m, onNone, onSome) => {
     if (isSome(m)) {
         return onSome(m);
     }
     return onNone();
 };
-export /*@__INLINE__*/ const mapSome = (m, onSome) => {
+export const mapSome = /*@__PURE__*/ (m, onSome) => {
     if (isSome(m)) {
         return some(onSome(m));
     }
     return none;
 };
-export /*@__INLINE__*/ const unwrapOr = (m, onNone) => {
+export const unwrapOr = /*@__PURE__*/ (m, onNone) => {
     return map(m, onNone, v => v);
 };
-export /*@__INLINE__*/ const orElse = (m, onNone) => {
+export const orElse = /*@__PURE__*/ (m, onNone) => {
     return map(m, onNone, v => some(v));
 };
-export /*@__INLINE__*/ const okOrElse = (m, onNone) => {
+export const okOrElse = /*@__PURE__*/ (m, onNone) => {
     return map(m, () => left(onNone()), v => right(v));
 };
 //# sourceMappingURL=Maybe.js.map
