@@ -1,0 +1,16 @@
+{
+    "compilerOptions": {
+        "strict": true,
+        "alwaysStrict": true,
+        "noUncheckedIndexedAccess": true,
+        "noImplicitAny": true,
+        "module": "NodeNext",
+        "target": "es6",
+        "moduleResolution": "nodenext",
+        "outDir": "dist",
+        "sourceMap": true,
+        "declaration": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+    }
+}

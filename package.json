@@ -1,0 +1,32 @@
+{
+  "name": "maybe-either",
+  "version": "1.0.0",
+  "private": true,
+  "description": "",
+  "type": "module",
+  "exports": {
+    "./Maybe": {
+      "import": "./dist/Maybe.js",
+      "types": "./dist/Maybe.d.ts"
+    },
+    "./Either": {
+      "import": "./dist/Either.js",
+      "types": "./dist/Either.d.ts"
+    },
+    "./Boolean": {
+      "import": "./dist/Boolean.js",
+      "types": "./dist/Boolean.d.ts"
+    }
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc",
+    "prepare": "npm run build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "typescript": "^5.9.3"
+  }
+}
