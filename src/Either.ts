@@ -12,15 +12,15 @@ export type Either<L, R> = {
     [_r]: Maybe<R>,
 } & EitherTagObject;
 
-export const left = /*@__PURE__*/ <L, R>(value: L): Either<L, R> => {
+export const left = <L, R>(value: L): Either<L, R> => {
     return [some(value), none] as unknown as Either<L, R>;
 };
 
-export const right = /*@__PURE__*/ <L, R>(value: R): Either<L, R> => {
+export const right = <L, R>(value: R): Either<L, R> => {
     return [none, some(value)] as unknown as Either<L, R>;
 };
 
-export const map = /*@__PURE__*/ <L, R, T>(
+export const map = <L, R, T>(
     e: Either<L, R>,
     onLeft: (value: L) => T,
     onRight: (value: R) => T,
@@ -31,7 +31,7 @@ export const map = /*@__PURE__*/ <L, R, T>(
     return onLeft(e[_l] as Some<L>);
 };
 
-export const ok = /*@__PURE__*/ <L, R>(
+export const ok = <L, R>(
     e: Either<L, R>,
 ): Maybe<R> => {
     if (isSome(e[_r])) {
