@@ -15,6 +15,13 @@ export const some = <T>(t: T): Some<T> => {
     return t as Some<T>;
 };
 
+export const fromUndefinable = <T>(v: T | undefined): Maybe<T> => {
+    if (v === undefined) {
+        return none;
+    }
+    return v as Some<T>;
+};
+
 export const isNone = <T>(m: Maybe<T>): m is None => {
     return m === none;
 };
@@ -40,6 +47,16 @@ export const mapSome = <T, U>(
 ): Maybe<U> => {
     if (isSome(m)) {
         return some(onSome(m));
+    }
+    return none;
+};
+
+export const mapNone = <T>(
+    m: Maybe<T>,
+    onNone: () => T
+): Maybe<T> => {
+    if (isNone(m)) {
+        return some(onNone());
     }
     return none;
 };
