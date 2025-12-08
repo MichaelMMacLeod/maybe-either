@@ -1,5 +1,9 @@
 import { left, right } from "./Either.js";
-export const none = Object.freeze({ __Maybe_None: 'None' });
+export const none = /*@__NOINLINE__*/ Object.freeze({ __Maybe_None: 'None' });
+// Why NOINLINE? 
+// We depends on none === none being true, which is broken if its value is
+// duplicated everywhere by the reduce_vars option in terser.
+// See: https://github.com/terser/terser?tab=readme-ov-file#annotations
 export const some = (t) => {
     return t;
 };

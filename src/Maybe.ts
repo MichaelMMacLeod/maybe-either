@@ -9,7 +9,11 @@ export type Some<T> = T & MaybeTagObject;
 
 export type Maybe<T> = None | Some<T>;
 
-export const none: None = Object.freeze({ __Maybe_None: 'None' }) as None;
+export const none: None = /*@__NOINLINE__*/ Object.freeze({ __Maybe_None: 'None' }) as None;
+// Why NOINLINE?
+// We depends on none === none being true, which is broken if its value is
+// duplicated everywhere by the reduce_vars option in terser.
+// See: https://github.com/terser/terser?tab=readme-ov-file#annotations
 
 export const some = <T>(t: T): Some<T> => {
     return t as Some<T>;
